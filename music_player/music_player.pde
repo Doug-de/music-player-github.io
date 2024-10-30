@@ -179,7 +179,6 @@ void keyPressed() {
    Note: CAP Lock with ||
    if ( key==? || key==? ) ;
    */
-  if ( key=='P' || key=='p' ) song[currentSong].play(); //Simple Play, no double tap possible
   //
   //if ( key=='P' || key=='p' ) song[currentSong].loop(0); //Simple Play, double tap possible
   /* Note: double tap is automatic rewind, no pause
@@ -188,18 +187,20 @@ void keyPressed() {
    */
   //if ( key=='S' || key=='s' ) song[currentSong].pause(); //Simple Stop, no double taps
   //
-  if ( key==' ' | key==' ' ) {
+  if ( key=='C' || key=='c' ) {
     if ( song[currentSong].isPlaying() ) {
       song[currentSong].pause(); //single tap
-   if ( key=='S' | key=='s' ) {
-    if ( song[currentSong].isPlaying() ) {
-      song[currentSong].rewind(); //double tap
+      if ( key=='S' || key=='s' ) {
+        if ( song[currentSong].isPlaying() ) {
+          song[currentSong].rewind(); //double tap
+        }
+      }
     }
   }
   if ( key=='L' || key=='l' ) song[currentSong].loop(1); // Loop ONCE: Plays, then plays again, then stops & rewinds
   if ( key=='I' || key=='i' ) song[currentSong].loop(); // Loop Infinitely //Parameter: BLANK or -1
-  if ( key=='F' || key=='f' ) song[currentSong].skip( 10000 ); // Fast Forward, Rewind, & Play Again //Parameter: milliseconds
-  if ( key=='R' || key=='r' ) song[currentSong].skip( -10000 ); // Fast Reverse & Play //Parameter: negative numbers
+  if ( key==CODED || keyCode==RIGHT ) song[currentSong].skip( 10000 ); // Fast Forward, Rewind, & Play Again //Parameter: milliseconds
+  if ( key==CODED || keyCode==LEFT ) song[currentSong].skip( -10000 ); // Fast Reverse & Play //Parameter: negative numbers
   if ( key=='M' || key=='m' ) { // MUTE
     //
     //MUTE Behaviour: stops electricty to speakers, does not stop file
