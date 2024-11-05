@@ -4,16 +4,16 @@ import ddf.minim.effects.*;
 import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
+
 //
 //Global Variables
 Minim minim;
-int numberOfSongs = 8; //Able to Autodetect based on Pathway
+int numberOfSongs = 3; //Able to Autodetect based on Pathway
 AudioPlayer[] song = new AudioPlayer[numberOfSongs];
 int currentSong = numberOfSongs - numberOfSongs;  //beginning current song as ZERO
 //
 int appWidth, appHeight;
-float musicButtonDIV_X, musicButtonDIV_Y, musicButtonDIV_Width, musicButtonDIV_Height;
-float musicButtonSquareX=0.0, musicButtonSquareY=0.0, musicButtonSquareWidth=0.0, musicButtonSquareHeight=0.0; //Populated in IF
+float imageDIV_X, imageDIV_Y, imageDIV_Width, imageDIV_Height;
 //
 void setup()
 {
@@ -21,44 +21,19 @@ void setup()
   appWidth = width;
   appHeight = height;
   //Variables for any music button
-  musicButtonDIV_Width = appWidth*1/2;
-  musicButtonDIV_Height = appHeight*1/2;
-  musicButtonDIV_X = musicButtonDIV_Width - musicButtonDIV_Width*1/2;
-  musicButtonDIV_Y = musicButtonDIV_Height- musicButtonDIV_Height*1/2;
+  imageDIV_Width = appWidth*1/2;
+  imageDIV_Height = appHeight*1/2;
+  imageDIV_X = imageDIV_Width - imageDIV_Width*1/2;
+  imageDIV_Y = imageDIV_Height- imageDIV_Height*1/2;
   //Use if statement to change, introduce ternary operator
   //
   //Population (Variables)
-  //Work out a case Study:
-  if ( musicButtonDIV_Width >= musicButtonDIV_Height ) { // Landscape //error: square does not go in the middle
-    // musicButtonWidth needs to change
-    musicButtonSquareWidth = musicButtonDIV_Height ;
-    musicButtonSquareHeight = musicButtonDIV_Height ;
-    float padding1 = musicButtonDIV_Width - musicButtonDIV_Height; //working out value needed, with formulae
-    float padding2 = padding1*1/2; ////working out value needed, with formulae
-    musicButtonSquareX = musicButtonDIV_X + padding2 ; //note: minus moves it the wrong way, difficult to see
-    musicButtonSquareY = musicButtonDIV_Y;
-    println ( padding1, padding2 ); //local variables, garbage collected
+  //Centering, Left Justified, Right Justified
+  if ( imageDIV_Width >= imageDIV_Height ) { // Landscape //error: square does not go in the middle    
+    println (  );
   } else { //Portrait
-    // musicButtonHeight needs to change
-    musicButtonSquareWidth = musicButtonDIV_Width ;
-    musicButtonSquareHeight = musicButtonDIV_Width;
-    float padding1 = musicButtonDIV_Height - musicButtonDIV_Width; //working out value needed, with formulae
-    float padding2 = padding1*1/2; ////working out value needed, with formulae
-    musicButtonSquareX = musicButtonDIV_X; //note: minus moves it the wrong way, difficult to see
-    musicButtonSquareY = musicButtonDIV_Y + padding2;
-    println ( padding1, padding2 ); //local variables, garbage collected
+    println (  );
   }
-  println( musicButtonDIV_X, musicButtonDIV_Y, musicButtonDIV_Width, musicButtonDIV_Height );
-  println ( musicButtonSquareX, musicButtonSquareY, musicButtonSquareWidth, musicButtonSquareHeight );
-  
-  //float padding = 1.0/4.0;
-  //float stopButtonSize = 1.0-(1.0/4.0);
-  /*
-  stopWidth = musicButtonDIV_Width*stopButtonSize; //stopButtonSize
-   stopHeight = musicButtonDIV_Height*stopButtonSize; //stopButtonSize
-   stopX = musicButtonDIV_X+padding;
-   stopY = musicButtonDIV_Y+padding;
-   */
   //
   minim = new Minim(this); //load from data directory, loadFile should also load from project folder
   //
@@ -68,57 +43,104 @@ void setup()
   //Alphebetical order, same as OS ordering files
   String beatYourCompetition = "Beat_Your_Competition";
   String cycles = "Cycles";
-  String eureka = "Eureka";
-  String ghostWalk = "Ghost_Walk";
-  String groove = "groove";
-  String newsroom = "Newsroom";
-  String startYourEngines = "Start_Your_Engines";
   String theSimplest = "The_Simplest";
   //
   //Add Reading into Array
   String directory = "../../../" + musicPathway;
-  String file = directory + groove + mp3FileName;
-  song[currentSong] = minim.loadFile( file );
-  file = directory + startYourEngines + mp3FileName;
-  song[currentSong+=1] = minim.loadFile( file );
-  file = directory + beatYourCompetition + mp3FileName;
+  String file = directory +beatYourCompetition + mp3FileName;
   song[currentSong+=1] = minim.loadFile( file );
   file = directory + cycles + mp3FileName;
   song[currentSong+=1] = minim.loadFile( file );
-  file = directory + eureka + mp3FileName;
-  song[currentSong+=1] = minim.loadFile( file );
-  file = directory + ghostWalk + mp3FileName;
-  song[currentSong+=1] = minim.loadFile( file );
-  file = directory + newsroom + mp3FileName;
-  song[currentSong+=1] = minim.loadFile( file );
   file = directory + theSimplest + mp3FileName;
-  song[currentSong+=1] = minim.loadFile( file );
   //
   currentSong = 0;
-  //
-  song[currentSong].play();
-  //Use play(timeStart) & loop(numberOfLoops)
-  //Purpose is 2D Shapes
-  //Introduce keyPressed as keyboard shortcuts
-  //Introduce mousePressed as interaction
   //
   //DIVs
   //rect() based on variables; variables change with program (introduces parameters of a function and TABS)
   //rect( X, Y, Width, Height );
-  rect( musicButtonDIV_X, musicButtonDIV_Y, musicButtonDIV_Width, musicButtonDIV_Height );
+  rect( imageDIV_X, imageDIV_Y, imageDIV_Width, imageDIV_Height );
+  //
 } //End setup
 //
 void draw() {
   //background(200); // Gray Scale: 0-255
-  rect( musicButtonSquareX, musicButtonSquareY, musicButtonSquareWidth, musicButtonSquareHeight );
+  rect( imageDIV_X, imageDIV_Y, imageDIV_Width, imageDIV_Height );
   //fill();
-  //rect( stopX, stopY, stopWidth, stopHeight );
 } //End draw
 //
 void mousePressed() {
 } //End mousePressed
 //
 void keyPressed() {
+   /* Key Board Short Cuts ... learning what the Music Buttons could be
+   if ( key==? || key==? ) ;
+   */
+  if ( key=='P' || key=='p' ) song[currentSong].play(); //Simple Play, no double tap possible
+  //
+  //if ( key=='P' || key=='p' ) song[currentSong].loop(0); //Simple Play, double tap possible
+  /* Note: double tap is automatic rewind, no pause
+   Symbol is two triangles
+   This changes what the button might become after it is pressed
+   */
+  //if ( key=='S' || key=='s' ) song[currentSong].pause(); //Simple Stop, no double taps
+  //
+  if ( key==' ' | key==' ' ) {
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause(); //single tap
+    } else {
+      song[currentSong].rewind(); //double tap
+    }
+  }
+  if ( key=='L' || key=='l' ) song[currentSong].loop(1); // Loop ONCE: Plays, then plays again, then stops & rewinds
+  if ( key=='I' || key=='i' ) song[currentSong].loop(); // Loop Infinitely //Parameter: BLANK or -1
+  if ( key==CODED || keyCode==RIGHT ) song[currentSong].skip( 10000 ); // Fast Forward, Rewind, & Play Again //Parameter: milliseconds
+  if ( key==CODED || keyCode==LEFT) song[currentSong].skip( -10000 ); // Fast Reverse & Play //Parameter: negative numbers
+  if ( key=='M' || key=='m' ) { // MUTE
+  //
+    if ( song[currentSong].isMuted() ) {
+      //ERROR: song might not be playing
+      //CATCH: ask .isPlaying() or !.isPlaying()
+      song[currentSong].unmute();
+    } else {
+      //Possible ERROR: Might rewind the song
+      song[currentSong].mute();
+    }
+  }
+  if ( key=='O' || key=='o' ) { // Pause
+    //
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+    } else {
+      song[currentSong].play();
+    }
+  }
+  if ( key==CODED || keyCode==ESC ) exit(); // QUIT //UP
+  if ( key==CODED || keyCode==BACKSPACE ) exit(); // QUIT
+  //
+  if ( key=='N' || key=='n' ) { // NEXT //See .txt for starter hint
+    println(currentSong);
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+      song[currentSong].rewind();
+      //
+      if ( currentSong==numberOfSongs-1 ) {
+        currentSong = 0;
+      } else {
+        currentSong++;
+      }
+      song[currentSong].play();
+    } else {
+      //
+      song[currentSong].rewind();
+      //
+      if ( currentSong==numberOfSongs-1 ) {
+        currentSong = 0;
+      } else {
+        currentSong++;
+      }
+   }
+    println("Song Playing:", currentSong);
+  }
 } //End keyPressed
 //
 // End Main Program
