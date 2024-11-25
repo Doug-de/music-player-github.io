@@ -1,6 +1,6 @@
-/*Static Text
+/*Statix Text
 - text Aspect Ratio
-Tempus Sans ITC , Ravie
+- change the text in middle rect()
 */
 //Global Variables
 int appwidth, appheight;
@@ -8,10 +8,13 @@ float titleX, titleY, titleWidth, titleHeight;
 float supercoolPhraseX, supercoolPhraseY, supercoolPhraseWidth, supercoolPhraseHeight;
 float footerX, footerY, footerWidth, footerHeight;
 PFont titleFont, footerFont, phraseFont;
-color purple=#6C08FF, white=#FFFFFF, resetDefaultInk=white; //Not Night Mode Friendly
-int size, title;
-String title = "How do I write text?", footer="This is at the boottom", phrase="ORA"
+color ink, purple=#6C08FF, white=#FFFFFF, resetDefaultInk=white; //Not Night Mode Friendly
+int size;
+String title = "How do I write text?", footer="This is at the boottom", phrase="ORA";
+Boolean randomColour=false;
 //
+void setup()
+{
 //Display
 size( 500, 700 ); //Portrait CANVAS
 appwidth = width;
@@ -35,15 +38,40 @@ footerY = appheight*8/10;
 rect( titleX, titleY, titleWidth, titleHeight );
 rect( supercoolPhraseX, supercoolPhraseY, supercoolPhraseWidth, supercoolPhraseHeight );
 rect( footerX, footerY, footerWidth, footerHeight );
+} //End setup
 //
+void draw()
+{
 //Drawing Text
-fill(purple); //Ink, hexidecimal copied from Color Selector 
 textAlign(CENTER, CENTER); //Align X&Y, see Processing.org / Refrence
 //Values: [ LEFT | CENTER | RIGTHT ] & [ TOP | CENTER | BOTTOM | BASELINE ]
-size = 43; //Change the number until it fits
+ink = purple;
+fill(ink); 
+size = 47; //Change the number until it fits
 textFont(titleFont, size);
 text( title, titleX, titleY, titleWidth, titleHeight );
-textFont( footer, size );
+ink = purple;
+fill(ink); 
+size = 43; //Change the number until it fits
+textFont( footerFont, size );
 text( footer, footerX, footerY, footerWidth, footerHeight );
-textFont( supercoolPhrase, size );
-text( Phrase, supercoolPhraseX, supercoolPhraseY, supercoolPhraseWidth, supercoolPhraseHeight );
+//
+ink = ( randomColour == true ) ? color( random(0, 256), random(256), random(256) ) : purple ; //Ternary Operator
+//
+fill(ink); 
+size = 83; //Change the number until it fits
+textFont( phraseFont, size );
+text( phrase, supercoolPhraseX, supercoolPhraseY, supercoolPhraseWidth, supercoolPhraseHeight );
+} //End draw
+//
+void mousePressed() {} //End mousePressed
+//
+void keyPressed() { 
+  if ( randomColour == true ) {
+    randomColour = false;
+  } else {
+    randomColour = true;
+  }
+} //End keyPressed
+//
+//End MAIN
