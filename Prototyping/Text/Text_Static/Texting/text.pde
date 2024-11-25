@@ -10,7 +10,7 @@ float footerX, footerY, footerWidth, footerHeight;
 PFont titleFont, footerFont, phraseFont;
 color purple=#6C08FF, white=#FFFFFF, resetDefaultInk=white; //Not Night Mode Friendly
 int size, title;
-String title = "How do I write text?", footer="This isat the boottom", phrase="ORA"
+String title = "How do I write text?", footer="This is at the boottom", phrase="ORA"
 //
 //Display
 size( 500, 700 ); //Portrait CANVAS
@@ -21,9 +21,9 @@ appheight = height;
 //Fonts from OS (Operating System)
 //String[] fontList = PFont.list(); //To list all fonts available on OS
 //printArray(fontList); //For listing all possible fonts to choose from, then createFont
-titleFont = createFont("Tempus Sans ITC", 55); //Verify the font exists in Processing.Java
-footerFont = createFont("Ravie", 55);
-phraseFont = createFont("OpenDylexic-Bold", 55);
+titleFont = createFont("Tempus Sans ITC", 50); //Verify the font exists in Processing.Java
+footerFont = createFont("Ravie", 50);
+phraseFont = createFont("OpenDylexic-Bold", 50);
 //Population
 footerX = supercoolPhraseX = titleX = appwidth*1/10;
 footerWidth = supercoolPhraseWidth = titleWidth = appwidth*8/10;
@@ -40,7 +40,7 @@ rect( footerX, footerY, footerWidth, footerHeight );
 fill(purple); //Ink, hexidecimal copied from Color Selector 
 textAlign(CENTER, CENTER); //Align X&Y, see Processing.org / Refrence
 //Values: [ LEFT | CENTER | RIGTHT ] & [ TOP | CENTER | BOTTOM | BASELINE ]
-size = 50; //Change the number until it fits
+size = 43; //Change the number until it fits
 textFont(titleFont, size);
 text( title, titleX, titleY, titleWidth, titleHeight );
 textFont( footer, size );
