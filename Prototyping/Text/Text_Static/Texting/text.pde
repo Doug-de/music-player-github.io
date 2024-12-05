@@ -11,8 +11,7 @@ PFont titleFont, footerFont, phraseFont;
 color ink, orange=#FF8400, white=#FFFFFF, resetDefaultInk=white; //Not Night Mode Friendly
 int size;
 String title = "steel ball run", footer="This is NOT at the bottom", phrase="ORA-ORA-ORA";
-Boolean randomColour=false;
-int randomColour2, randomColour3;
+Boolean randomColour=false, randomColour2, randomColour3;
 //
 void setup()
 {
@@ -23,11 +22,11 @@ void setup()
   //
   //Text: Single Executed Code
   //Fonts from OS (Operating System)
-  //String[] fontList = PFont.list(); //To list all fonts available on OS
-  //printArray(fontList); //For listing all possible fonts to choose from, then createFont
+  String[] fontList = PFont.list(); //To list all fonts available on OS
+  printArray(fontList); //For listing all possible fonts to choose from, then createFont
   titleFont = createFont("Tempus Sans ITC", 50); //Verify the font exists in Processing.Java
   footerFont = createFont("Ravie", 50);
-  phraseFont = createFont("OpenDylexic-Bold", 50);
+  phraseFont = createFont("SimSun-ExtB", 50);
   //Population
   footerX = supercoolPhraseX = titleX = appwidth*1/10;
   footerWidth = supercoolPhraseWidth = titleWidth = appwidth*8/10;
@@ -58,14 +57,14 @@ void draw()
   text( footer, footerX, footerY, footerWidth, footerHeight );
   //
   //ink = ( randomColour == true ) ? color (0, 255, 99) color (3, 97, 255) color (255, 0, 0) : orange ; //Ternary Operator
-  if ( randomColour == true && randomColour2 == false && randomColour3 == false ) {
-    ink = green (0, 255, 99);
+  if ( randomColour==true && randomColour2 == false && randomColour3 == false ) {
+    ink = color(0, 255, 99);
   } else if ( randomColour == false && randomColour2 == true && randomColour3 == false ) {
-    ink = blue (3, 97, 255) ;
+    ink = color(3, 97, 255) ;
   } else if ( randomColour == false && randomColour2 == false && randomColour3 == true ) {
-    ink = red (255, 0, 0) ;
-  } else { (orange)
-    ink = orange (255, 132, 0) ;
+    ink = color(255, 0, 0) ;
+  } else { 
+    ink = color(255, 132, 0) ;
   }
   //
   fill(ink);
