@@ -1,5 +1,3 @@
-/* META Data - Strings
- */
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
@@ -12,7 +10,7 @@ int appWidth, appHeight ;
 float MetaDataX1, MetaDataY1, MetaDataWidth1, MetaDataHeight1 ;
 float MetaDataX2, MetaDataY2, MetaDataWidth2, MetaDataHeight2 ;
 float MetaDataX3, MetaDataY3, MetaDataWidth3, MetaDataHeight3 ;
-int Beat_Your_Competition ;
+int Beat_Your_Competition, currentSongs, beatYourCompetition, theSimplest;
 //
 Minim minim;
 int numberOfSongs = 3;
@@ -21,7 +19,7 @@ AudioMetaData[] songTitleMetaData = new AudioMetaData[numberOfSongs];
 AudioMetaData[] songPostionMetaData = new AudioMetaData[numberOfSongs];
 AudioMetaData[] songTimeRemainingMetaData = new AudioMetaData[numberOfSongs];
 AudioMetaData[] songTotalTimeMetaData = new AudioMetaData[numberOfSongs];
-int currentSong = numberOfsongs - numberOfSongs;
+int currentSong = numberOfSongs - numberOfSongs;
 //Review of more meta data needed
 //
 void setup()
@@ -39,10 +37,9 @@ void setup()
   String theimplest = "The_Simplest";
   //
   //Add Reading into Array
-  String directory = "../../../" + musicPathway
+  String directory = "../../../" + musicPathway;
   println ( currentSong, directory );
   String file = directory + beatYourCompetition + mp3FileName;
-  println (file);
   song[currentSong+=1] = mimin.loadFile( "../../../music/Beat_Your_Competition");
   println (file);
   song[currentSong+=1] = minim.loadFile( "../../../music/Cycles" );
