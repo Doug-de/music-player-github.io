@@ -11,7 +11,7 @@ PFont titleFont, footerFont, phraseFont;
 color ink, orange=#FF8400, white=#FFFFFF, resetDefaultInk=white; //Not Night Mode Friendly
 int size;
 String title = "steel ball run", footer="This is NOT at the bottom", phrase="ORA-ORA-ORA";
-Boolean randomColour=false, randomColour2, randomColour3;
+Boolean randomColour=false, randomColour2=false, randomColour3=false;
 //
 void setup()
 {
@@ -59,12 +59,12 @@ void draw()
   //ink = ( randomColour == true ) ? color (0, 255, 99) color (3, 97, 255) color (255, 0, 0) : orange ; //Ternary Operator
   if ( randomColour==true && randomColour2 == false && randomColour3 == false ) {
     ink = color(0, 255, 99);
-  } else if ( randomColour == false && randomColour2 == true && randomColour3 == false ) {
-    ink = color(3, 97, 255) ;
+  } else if ( randomColour==false && randomColour2==true && randomColour3==false ) {
+    ink = color(3, 97, 255);
   } else if ( randomColour == false && randomColour2 == false && randomColour3 == true ) {
-    ink = color(255, 0, 0) ;
+    ink = color(255, 0, 0);
   } else { 
-    ink = color(255, 132, 0) ;
+    ink = color(255, 132, 0);
   }
   //
   fill(ink);
@@ -83,7 +83,7 @@ void keyPressed() {
     } else {
       randomColour = false;
     }
-  }
+  } 
 } //End keyPressed
 //
 //End MAIN
